@@ -10,6 +10,10 @@ class Server{
         //Configurando el puerto
         this.port = process.env.PORT;
 
+        //Directorio de rutas definidas
+        this.usuariosPath = '/api/usuarios';
+        
+
         //Middlerwares
         this.middlewares();
 
@@ -27,35 +31,8 @@ class Server{
     }
 
     routes(){
-        this.app.get('/api/', (req, res) => {
-            res.json({
-                msg:'GET API METHOD'
-            });
-        });
-
-        this.app.put('/api/', (req, res) => {
-            res.status(400).json({
-                msg:'PUT API METHOD'
-            });
-        });
-
-        this.app.post('/api/', (req, res) => {
-            res.status(201).json({
-                msg:'POST API METHOD'
-            });
-        });
-
-        this.app.delete('/api/', (req, res) => {
-            res.status(500).json({
-                msg:'DELETE API METHOD'
-            });
-        });
-
-        this.app.patch('/api/', (req, res) => {
-            res.json({
-                msg:'PATCH API METHOD'
-            });
-        });
+        
+        this.app.use(this.usuariosPath, require('../routes/user.route'));
         
     }
 
