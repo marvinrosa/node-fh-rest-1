@@ -2,9 +2,17 @@ const { response, request } = require('express');
 
 
 
-const getUsuarios = ( req, res = response ) => {
+const getUsuarios = ( req = request , res = response ) => {
+
+    const { q, db, apikey, page = 1, limit=10 } = req.query;
+
     res.json({
-        msg:'GET API METHOD CONTROLLER'
+        msg:'GET API METHOD CONTROLLER',
+        q,
+        db,
+        apikey,
+        page,
+        limit
     });
 }
 
@@ -20,8 +28,12 @@ const postUsuarios =  ( req, res = response ) => {
 }
 
 const putUsuarios = ( req, res = response ) => {
+
+    const { id } = req.params;
+
     res.status(400).json({
-        msg:'PUT API METHOD CONTROLLER'
+        msg:'PUT API METHOD CONTROLLER',
+        id
     });
 }
 

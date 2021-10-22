@@ -10,11 +10,11 @@ const router = new Router();
 
 router.get('/', getUsuarios );
 
-router.post('/', postUsuarios );
+router.post('/:id', postUsuarios );
 
-router.put('/', putUsuarios );
+router.put('/:id', putUsuarios );
 
-router.delete('/', deleteUsuarios );
+router.delete('/:id', deleteUsuarios );
 
 router.patch('/',  patchUsuarios );
 
