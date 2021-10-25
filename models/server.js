@@ -13,7 +13,7 @@ class Server{
         this.port = process.env.PORT;
 
         //Directorio de rutas definidas
-        this.usuariosPath = '/api/usuarios';
+        this.usuariosPath = '/usuarios';
         
         // this.paths = {
         //     auth: "/api/v1/auth",
