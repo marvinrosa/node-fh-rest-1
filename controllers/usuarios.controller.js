@@ -6,16 +6,16 @@ const { response, request } = require('express');
 const getUsuarios = ( req = request , res = response ) => {
 
     //*Parametros enviados por URL
-   // const { q, db, apikey, page = 1, limit=10 } = req.query;
+   const { q, db, apikey, page = 1, limit=10 } = req.query;
 
-    // res.json({
-    //     msg:'GET API METHOD CONTROLLER',
-    //     q,
-    //     db,
-    //     apikey,
-    //     page,
-    //     limit
-    // });
+    res.json({
+        msg:'GET API METHOD CONTROLLER',
+        q,
+        db,
+        apikey,
+        page,
+        limit
+    });
 }
 
 const postUsuarios =  ( req, res = response ) => {
