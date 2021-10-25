@@ -7,7 +7,6 @@ const { getUsuarios,
         patchUsuarios } = require('../controllers/usuarios.controller');
 
 const router = new Router();
-
 router.get('/', getUsuarios );
 
 router.post('/:id', postUsuarios );

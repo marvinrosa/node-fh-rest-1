@@ -1,6 +1,5 @@
 const express = require('express');
 const cors = require('cors');
-const crypto = require('crypto');
 const dotenv = require('dotenv');
 dotenv.config();
 
@@ -9,14 +8,21 @@ class Server{
     constructor(){
         //Inicializando express
         this.app = express();
-        this.cr = crypto();
+       
         //Configurando el puerto
         this.port = process.env.PORT;
 
         //Directorio de rutas definidas
-        this.usuariosPath = '/api/v1/usuarios';
+        this.usuariosPath = '/api/usuarios';
         
+        // this.paths = {
+        //     auth: "/api/v1/auth",
+        //     usuarios : "/api/v1/usuarios",
+        //     home: "/api/v1/home",
+        //   };
+        //this.usuariosPath = '/api/usuarios';
 
+          
         //Middlerwares
         this.middlewares();
 
@@ -24,7 +30,7 @@ class Server{
         this.routes();
         
         //Seguridad
-        this.crytoGenerate();
+
     }
 
     middlewares(){
@@ -33,7 +39,7 @@ class Server{
         this.app.use( cors() );
 
         //Personalizados
-        this.app.use(require('../middlewares/error.middleware'));
+        //this.app.use(require('../middlewares/error.middleware'));
 
         //Lectura y parseo del Body
         /*Se le especifica a express que para las 
@@ -45,7 +51,7 @@ class Server{
     }
 
     routes(){
-        
+
         this.app.use(this.usuariosPath, require('../routes/usuarios.route'));
         
     }
@@ -57,22 +63,7 @@ class Server{
     }
 
 
-    crytoGenerate(){
-
-        
-        // Calling randomBytes method with callback
-        this.cryptos.randomBytes(127, (err, buf) => {
-        if (err) {
-            // Prints error
-            console.log(err);
-            return;
-        }
-        
-        // Prints random bytes of generated data
-        console.log("La llave es: "
-                    + buf.toString('hex'));
-        });
-    }
+   
 }
 
 module.exports = Server;
