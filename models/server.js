@@ -36,7 +36,7 @@ class Server{
     middlewares(){
 
         //Cors 
-        this.app.use( cors() );
+        //this.app.use( cors() );
 
         //Personalizados
         //this.app.use(require('../middlewares/error.middleware'));
